@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+
+{% block body %}
+<div class="bg-dark text-secondary px-4 py-5 text-center">
+    <div class="py-5">
+      <h1 class="display-5 fw-bold text-white">Quiz Project  </h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="fs-5 mb-4">Assalomu alaykum QuizProjectimizga xush kelibsi. Siz bu saytda turli xil dasturlash yo'nalishlari buyicha bilimingizni sinashingiz mumkin!.</p>
+        {% if user.is_authenticated %}
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <a href="{% url 'quizapp:quiz_type_list'%}" type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Start Test</a>
+          <a href="{% url 'quizapp:result_list' %}" type="button" class="btn btn-outline-light btn-lg px-4">All Results</a>
+          <a href="{% url 'user:profile_view' %}" type="button" class="btn btn-outline-success btn-lg px-4">Enter Profile</a>
+        </div>
+        {% else %}
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <a href="{% url 'user:login_view' %}" type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">SingIn</a>
+          <a href="{% url 'user:signup_view' %}" type="button" class="btn btn-outline-light btn-lg px-4">SingUp</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+</div>
+
+{% endblock %}

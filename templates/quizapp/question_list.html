@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %} Question List {% endblock %}
+
+
+{% block body %}
+<div align="right " id="displaytimer"><b>Timer: 0 seconds</b></div>
+<form method='post' name="form1" action=''>
+    {% csrf_token %}
+    <h2>Questions</h2>
+     {% for question in questions %}
+    <div class="card my-4 text-bg-secondary">
+        <h4 class="text-dark card-header">{{ question.name }}</h4>
+        <div class="card-body">
+            <table class="table table-bordered">
+            {% for a in answer %}
+            {% if a.question == question %}
+                <tr>
+                    <td><input class="form-check-input" type="radio" value="{{ a.is_right }}" name="{{ question.name }}" id="flexRadioDefault1"></td>
+                    <th><label class="form-check-label" for="flexRadioDefault1">
+                        {{ a.name }} | {{ a.is_right }}</label>
+                    </th>
+                </tr>
+            {% endif %}
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+    {% endfor %}
+    <hr>
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+<script>
+            console.log('hello world')
+            const timer=document.getElementById('displaytimer')
+            console.log(timer.textContent)
+            const inputtag = document.getElementById('timer')
+
+            t=0
+            setInterval(()=>{
+                t+=1
+                timer.innerHTML ="<b>Timer: " +t+" seconds</b>"
+                inputtag.value = t
+            },1000)
+        </script>
+{% endblock %}

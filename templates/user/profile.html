@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} Register page {% endblock %}
+
+{% block body %}
+<h1>About me</h1>
+    <img src="{{ user.image_url }}" class="rounded" height="200px" width="200px">
+    <p><strong>Username: {{ user.username }}</strong></p>
+    <p><strong>First name:</strong> {{ user.first_name }}</p>
+    <p><strong>Last name:</strong> {{ user.last_name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Phone Number:</strong> {{ user.phone }}</p>
+    <p><strong>User Type:</strong> {{ user.user_type }}</p>
+    <p><strong>Gender:</strong> {{ user.gender }}</p>
+    <p><strong>Birthday:</strong> {{ user.birth_date }}</p>
+    <a class="btn btn-success rounded-pill 2-px" href="{% url 'user:profile_update_view' user.pk %}"><i class="fa-solid fa-pen"></i>Edit Profile</a>
+    <a class="btn btn-info rounded-pill 2-px" href="{% url 'user:password_change' %}"><i class="fa-solid fa-pen"></i>Password Change</a>
+    <a class="btn btn-danger rounded-pill 2-px" href="{% url 'user:logout_view' %}"><i class="fa-solid fa-pen"></i>LogOut</a>
+
+{% endblock %}

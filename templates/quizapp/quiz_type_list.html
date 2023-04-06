@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+
+{% block body %}
+<h3>Kategoriya tanlang</h3>
+    {% for qt in object_list %}
+        <p><a href="{% url 'quizapp:question_list' qt.slug %}" class="btn btn-outline-secondary d-inline-flex align-items-center" type="button">
+            {{ qt.name }} --->
+        <svg class="bi ms-1" width="20" height="20"><use xlink:href="#arrow-right-short"></use></svg>
+        </a></p>
+{% endfor %}
+{% endblock %}
